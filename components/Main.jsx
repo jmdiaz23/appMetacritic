@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react";
 
-import { Image, StyleSheet, Text, View, ScrollView } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  ActivityIndicator,
+} from "react-native";
 import { getLatestGames } from "../lib/metacritic";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { GameCard } from "./GameCard";
 
 export function Main() {
   const [games, setGames] = useState([]);
@@ -17,42 +25,16 @@ export function Main() {
   return (
     <View style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}>
       <ScrollView>
-        {games.map((game) => (
-          <View key={game.slug} style={styles.card}>
-            <Image source={{ uri: game.image }} style={styles.image} />
-            <Text style={styles.title}>{game.title}</Text>
-            <Text style={styles.score}>{game.score}</Text>
-            <Text style={styles.description}>{game.description}</Text>
+        {games.length === 0 ? (
+          <View
+            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          >
+            <ActivityIndicator />
           </View>
-        ))}
+        ) : (
+          games.map((game) => <GameCard key={game.slug} game={game} />)
+        )}
       </ScrollView>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  card: {
-    marginBottom: 42,
-  },
-  image: {
-    width: 107,
-    height: 147,
-    borderRadius: 10,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#fff",
-    marginTop: 10,
-  },
-  description: {
-    fontSize: 16,
-    color: "#eee",
-  },
-  score: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "green",
-    marginBottom: 10,
-  },
-});
