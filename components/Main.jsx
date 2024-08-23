@@ -24,17 +24,15 @@ export function Main() {
 
   return (
     <View style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}>
-      <ScrollView>
-        {games.length === 0 ? (
-          <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <ActivityIndicator />
-          </View>
-        ) : (
-          games.map((game) => <GameCard key={game.slug} game={game} />)
-        )}
-      </ScrollView>
+      {games.length === 0 ? (
+        <ActivityIndicator color={"#fff"} size={"large"} />
+      ) : (
+        <ScrollView>
+          {games.map((game) => (
+            <GameCard key={game.slug} game={game} />
+          ))}
+        </ScrollView>
+      )}
     </View>
   );
 }
