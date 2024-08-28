@@ -17,6 +17,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AnimatedGameCard } from "./GameCard";
 import { Logo } from "./Logo";
 import { CircleInfoIcon } from "./Icons";
+import { Screen } from "./Screen";
 export function Main() {
   const [games, setGames] = useState([]);
   const insets = useSafeAreaInsets();
@@ -28,7 +29,7 @@ export function Main() {
   }, []);
 
   return (
-    <View className="bg-black">
+    <Screen className="bg-black">
       {games.length === 0 ? (
         <ActivityIndicator color={"#fff"} size={"large"} />
       ) : (
@@ -40,6 +41,6 @@ export function Main() {
           )}
         />
       )}
-    </View>
+    </Screen>
   );
 }

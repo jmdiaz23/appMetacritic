@@ -1,11 +1,12 @@
 import { Link } from "expo-router";
 import { Text, View } from "react-native";
 import { useLocalSearchParams } from "expo-router";
+import { Screen } from "../components/Screen";
 
 export default function Detail() {
   const { id } = useLocalSearchParams();
   return (
-    <View className="flex-1 justify-center items-center bg-black">
+    <Screen>
       <View>
         <Text className="text-white font-bold mb-8 text-2xl">
           Detalles del juego {id}
@@ -14,6 +15,6 @@ export default function Detail() {
           hacia atras
         </Link>
       </View>
-    </View>
+    </Screen>
   );
 }
