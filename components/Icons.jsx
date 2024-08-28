@@ -5,5 +5,9 @@ export const CircleInfoIcon = (props) => (
 );
 
 export const HomeIcon = (props) => (
-  <AntDesign name="home" size={24} color="white" {...props} />
+  <AntDesign name="home" size={32} color="white" {...props} />
+);
+
+export const InfoIcon = (props) => (
+  <AntDesign name="info" size={32} color="white" {...props} />
 );

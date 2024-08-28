@@ -1,5 +1,5 @@
 import { Link, Stack } from "expo-router";
-import { View, Text, Pressable } from "react-native";
+import { View, Pressable } from "react-native";
 import { CircleInfoIcon } from "../components/Icons";
 import { Logo } from "../components/Logo";
 
